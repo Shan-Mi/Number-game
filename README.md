@@ -24,6 +24,23 @@ Experimental simple project, created by RN, TS, Expo
 </TabTwoStack.Navigator>
 ```
 Here is how we can hide the light border underline for header and don't display header for each screen.
+```js
+<TextInput
+  style={styles.input}
+  onChangeText={setResult}
+  placeholder={initialText}
+  clearButtonMode="always"
+  ref={(ref) => (textInputRef = ref)}
+/>
+```
+Use `(ref) => (textInputRef = ref)` to get access to TextInput.clear() method to clear text input.
 
 ## The last
 Not focus in styling too much, unit is not deadly written as well.
+
+## Results
+- Default behavior in different platforms, buttons on Android have default appearence (bcg blue + padding) but for iOS, there is nothing at all.
+- Virtual keybord auto popup when focus in textinput on Android.
+- Height is different (for `get your result` button)
+- Customized `Go Back` title is not shown on Android at all. (interesting)
+- On Android, the border underline in header and on the bottom are still visable.
