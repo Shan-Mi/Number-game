@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { Button } from "react-native";
+import { Button, Platform, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native";
 import { StyleSheet } from "react-native";
 import { getOneDate } from "../API";
 
 import { Text, View } from "../components/Themed";
+import Colors from "../constants/Colors";
 
 const DataScreen = () => {
   const initialText = "Input a number";
@@ -66,20 +67,30 @@ const DataScreen = () => {
           <Button onPress={handlePress} title="Get your result!" />
         </View>
       </View>
+
       {showResult ? (
-        <View>
-          <Text>{showResult}</Text>
-          <View>
-            <Button title="Play again" onPress={handleReplay} />
-          </View>
+        <View style={styles.results}>
+          <Text style={styles.text}>{showResult}</Text>
+          <TouchableOpacity style={styles.button}>
+            <Button
+              color={styles.button.color}
+              title="Play again"
+              onPress={handleReplay}
+            />
+          </TouchableOpacity>
         </View>
       ) : null}
+
       {errorMsg.show ? (
-        <View>
-          <Text>{errorMsg.message}</Text>
-          <View>
-            <Button title="Play again" onPress={handleReplay} />
-          </View>
+        <View style={styles.results}>
+          <Text style={styles.text}>{errorMsg.message}</Text>
+          <TouchableOpacity style={styles.button}>
+            <Button
+              color={styles.button.color}
+              title="Play again"
+              onPress={handleReplay}
+            />
+          </TouchableOpacity>
         </View>
       ) : null}
     </View>
@@ -124,8 +135,21 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   button: {
-    padding: 10,
-    backgroundColor: "#9abcf2",
-    borderRadius: 10,
+    paddingVertical: 0,
+    backgroundColor: Platform.OS === "ios" ? Colors.green : Colors.white,
+    borderRadius: 2,
+    color: Platform.OS === "android" ? Colors.green : Colors.white,
+    maxWidth: 150,
+  },
+  results: {
+    flex: 1,
+    marginHorizontal: "15%",
+    marginTop: "10%",
+    minWidth: 270,
+    alignItems: "center",
+  },
+  text: {
+    marginBottom: 20,
+    textAlign: "center",
   },
 });

@@ -13,7 +13,7 @@ const NumberStackNavigation = () => {
   return (
     <NumberStack.Navigator
       screenOptions={{
-        headerTitle: () => null,
+        // headerTitle: () => null,
         headerStyle: { shadowColor: "transparent" },
       }}>
       <NumberStack.Screen

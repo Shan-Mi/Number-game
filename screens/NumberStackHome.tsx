@@ -1,11 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import * as React from "react";
-import { Platform, TouchableOpacity } from "react-native";
-import { Button } from "react-native";
 import { StyleSheet } from "react-native";
 import MyButton from "../components/MyButton";
-
-import { Text, View } from "../components/Themed";
+import { View } from "../components/Themed";
 
 const NumberStackHome = () => {
   const navigation = useNavigation();
