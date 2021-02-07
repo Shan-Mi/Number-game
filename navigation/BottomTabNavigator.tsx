@@ -1,8 +1,7 @@
+import * as React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as React from "react";
-
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import RandomScreen from "../screens/RandomScreen";
@@ -86,7 +85,7 @@ function RandomNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={RandomScreen}
-        options={{ headerTitle: () => null,}}
+        options={{ headerTitle: () => null }}
       />
     </TabTwoStack.Navigator>
   );

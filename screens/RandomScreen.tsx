@@ -1,7 +1,5 @@
 import * as React from "react";
 import { useState } from "react";
-import { TouchableOpacity } from "react-native";
-import { Button } from "react-native";
 import { StyleSheet } from "react-native";
 import { getRandom } from "../API";
 import MyButton from "../components/MyButton";

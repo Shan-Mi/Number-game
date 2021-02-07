@@ -58,6 +58,7 @@ const DataScreen = () => {
           onChangeText={setMonth}
           placeholder={initialText}
           clearButtonMode="always"
+          keyboardType="numeric"
           ref={(ref) => (monthInputRef = ref)}
         />
         <TextInput
@@ -65,6 +66,7 @@ const DataScreen = () => {
           onChangeText={setDay}
           placeholder={initialText}
           clearButtonMode="always"
+          keyboardType="numeric"
           ref={(ref) => (dayInputRef = ref)}
         />
 
@@ -117,7 +119,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    // backgroundColor: "red",
   },
   separator: {
     marginVertical: 30,
@@ -125,9 +126,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   inputArea: {
-    // flex: 2
     flexDirection: "row",
-    // justifyContent: "space-around",
     marginTop: 20,
     alignItems: "center",
   },
@@ -136,7 +135,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     backgroundColor: Colors.grey,
     borderRadius: 3,
-    width: 120,
+    width: 50,
     marginRight: 10,
   },
   button: {

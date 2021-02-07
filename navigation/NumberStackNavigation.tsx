@@ -4,7 +4,7 @@ import React from "react";
 import DateScreen from "../screens/DateScreen";
 import MathScreen from "../screens/MathScreen";
 import TrivialScreen from "../screens/TrivialScreen";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import NumberStackHome from "../screens/NumberStackHome";
 
 const NumberStack = createStackNavigator();
@@ -13,7 +13,7 @@ const NumberStackNavigation = () => {
   return (
     <NumberStack.Navigator
       screenOptions={{
-        // headerTitle: () => null,
+        headerTitle: () => null,
         headerStyle: { shadowColor: "transparent" },
       }}>
       <NumberStack.Screen

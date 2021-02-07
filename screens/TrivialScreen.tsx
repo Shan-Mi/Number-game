@@ -60,6 +60,7 @@ const TrivialScreen = () => {
           onChangeText={handleOnChange}
           placeholder={initialText}
           clearButtonMode="always"
+          keyboardType="numeric"
           ref={(ref) => (textInputRef = ref)}
         />
 
@@ -107,17 +108,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // justifyContent: "space-between",
   },
-  titleArea: {
-    // display: 'flex',
-    // justifyContent: "center",
-    // flex: 1
-  },
+  titleArea: {},
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    // backgroundColor: "red",
   },
   separator: {
     marginVertical: 30,
@@ -125,9 +120,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   inputArea: {
-    // flex: 2
     flexDirection: "row",
-    // justifyContent: "space-around",
     marginTop: 20,
     alignItems: "center",
   },
