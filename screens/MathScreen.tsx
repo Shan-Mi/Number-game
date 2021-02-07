@@ -11,14 +11,14 @@ export default function MathScreen() {
   const [result, setResult] = useState("");
   const [showResult, setShowResult] = useState("");
   const [errorMsg, setErrorMsg] = useState({
-    message: "Please input only number",
+    message: "Please input any NUMBER",
     show: false,
   });
   let textInputRef: TextInput | null;
 
   const handlePress = async () => {
     const num = Number(result);
-    if (isNaN(num)) {
+    if (isNaN(num) || num === 0) {
       console.log(errorMsg);
       return setErrorMsg({ ...errorMsg, show: true });
     }
