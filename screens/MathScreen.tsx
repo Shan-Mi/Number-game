@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
+import { Platform, TouchableOpacity } from "react-native";
 import { Button, StyleSheet } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { getOneMath } from "../API";
-
 import { Text, View } from "../components/Themed";
+import Colors from "../constants/Colors";
 
 export default function MathScreen() {
   const initialText = "Input a number";
@@ -23,6 +24,7 @@ export default function MathScreen() {
     }
     try {
       const res = await getOneMath(num);
+      setErrorMsg({ ...errorMsg, show: false });
       setShowResult(res);
     } catch (e) {
       console.error(e);
@@ -36,37 +38,62 @@ export default function MathScreen() {
     textInputRef?.clear();
   };
 
+  const handleOnChange = (e: string) => {
+    setResult(e);
+    if (!e) {
+      setResult("");
+      setShowResult("");
+      setErrorMsg({ ...errorMsg, show: false });
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.titleArea}>
         <Text style={styles.title}>Math</Text>
       </View>
+
       <View style={styles.inputArea}>
         <TextInput
           style={styles.input}
-          onChangeText={setResult}
+          onChangeText={handleOnChange}
           placeholder={initialText}
           clearButtonMode="always"
           ref={(ref) => (textInputRef = ref)}
         />
-        <View style={styles.button}>
-          <Button onPress={handlePress} title="Get your result!" />
-        </View>
+
+        <TouchableOpacity style={styles.button}>
+          <Button
+            color={styles.button.color}
+            onPress={handlePress}
+            title="Get your result!"
+          />
+        </TouchableOpacity>
       </View>
+
       {showResult ? (
-        <View>
-          <Text>{showResult}</Text>
-          <View>
-            <Button title="Play again" onPress={handleReplay} />
-          </View>
+        <View style={styles.results}>
+          <Text style={styles.text}>{showResult}</Text>
+          <TouchableOpacity style={styles.button}>
+            <Button
+              color={styles.button.color}
+              title="Play again"
+              onPress={handleReplay}
+            />
+          </TouchableOpacity>
         </View>
       ) : null}
+
       {errorMsg.show ? (
-        <View>
-          <Text>{errorMsg.message}</Text>
-          <View>
-            <Button title="Play again" onPress={handleReplay} />
-          </View>
+        <View style={styles.results}>
+          <Text style={styles.text}>{errorMsg.message}</Text>
+          <TouchableOpacity style={styles.button}>
+            <Button
+              color={styles.button.color}
+              title="Play again"
+              onPress={handleReplay}
+            />
+          </TouchableOpacity>
         </View>
       ) : null}
     </View>
@@ -77,7 +104,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // justifyContent: "space-between",
   },
   titleArea: {
     // display: 'flex',
@@ -102,15 +128,29 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   input: {
-    padding: 20,
-    backgroundColor: "#CFCFD5",
-    borderRadius: 10,
+    paddingVertical: Platform.OS === "android" ? 4 : 10,
+    paddingLeft: 10,
+    backgroundColor: Colors.grey,
+    borderRadius: 3,
     width: 120,
     marginRight: 10,
   },
   button: {
-    padding: 10,
-    backgroundColor: "#9abcf2",
-    borderRadius: 10,
+    paddingVertical: 0,
+    backgroundColor: Platform.OS === "ios" ? Colors.green : Colors.white,
+    borderRadius: 2,
+    color: Platform.OS === "android" ? Colors.green : Colors.white,
+    maxWidth: 150,
+  },
+  results: {
+    flex: 1,
+    marginHorizontal: "15%",
+    marginTop: "10%",
+    minWidth: 270,
+    alignItems: "center",
+  },
+  text: {
+    marginBottom: 20,
+    textAlign: "center",
   },
 });

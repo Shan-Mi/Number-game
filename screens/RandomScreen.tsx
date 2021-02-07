@@ -3,9 +3,8 @@ import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { Button } from "react-native";
 import { StyleSheet } from "react-native";
-
 import { getRandom } from "../API";
-
+import MyButton from "../components/MyButton";
 import { Text, View } from "../components/Themed";
 
 export default function RandomScreen() {
@@ -32,38 +31,10 @@ export default function RandomScreen() {
       <View style={styles.containerBottow}>
         <Text>Press a button to try it out!</Text>
         <View style={styles.btns}>
-          <TouchableOpacity style={styles.math}>
-            <Button
-              onPress={() => {
-                handleResult("trivia");
-              }}
-              title="Trivia"
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.math}>
-            <Button
-              onPress={() => {
-                handleResult("year");
-              }}
-              title="Year"
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.math}>
-            <Button
-              onPress={() => {
-                handleResult("date");
-              }}
-              title="Date"
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.math}>
-            <Button
-              onPress={() => {
-                handleResult("math");
-              }}
-              title="Math"
-            />
-          </TouchableOpacity>
+          <MyButton screen="Trivia" cb={() => handleResult("trivia")} />
+          <MyButton screen="Year" cb={() => handleResult("year")} />
+          <MyButton screen="Date" cb={() => handleResult("date")} />
+          <MyButton screen="Math" cb={() => handleResult("math")} />
         </View>
 
         <View>
