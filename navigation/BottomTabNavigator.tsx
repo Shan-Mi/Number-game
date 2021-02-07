@@ -5,9 +5,6 @@ import * as React from "react";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import DateScreen from "../screens/DateScreen";
-import MathScreen from "../screens/TabOneScreen";
-import TrivialScreen from "../screens/TrivialScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 import NumberStackNavigation from "./NumberStackNavigation";
@@ -23,7 +20,7 @@ export default function BottomTabNavigator() {
       tabBarOptions={{
         activeTintColor: Colors[colorScheme].tint,
         tabStyle: { borderTopWidth: 0 },
-        style: { borderTopWidth: 0 }
+        style: { borderTopWidth: 0 },
       }}>
       <BottomTab.Screen
         name="Numbers"
