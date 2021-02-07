@@ -5,7 +5,7 @@ import * as React from "react";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import RandomScreen from "../screens/RandomScreen";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 import NumberStackNavigation from "./NumberStackNavigation";
 
@@ -85,8 +85,8 @@ function RandomNavigator() {
       }}>
       <TabTwoStack.Screen
         name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: "Random Numbers" }}
+        component={RandomScreen}
+        options={{ headerTitle: () => null,}}
       />
     </TabTwoStack.Navigator>
   );

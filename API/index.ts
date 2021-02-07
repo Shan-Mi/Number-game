@@ -29,7 +29,7 @@ export const getOneDate = async (month: number, date: number) => {
 
 export const getRandom = async (type: string) => {
   try {
-    const { data } = await axios.get(`${URL}type`);
+    const { data } = await axios.get(`${URL}random/${type}`);
     return data;
   } catch (e) {
     console.error(e);

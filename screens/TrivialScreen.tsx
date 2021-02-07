@@ -43,6 +43,7 @@ const TrivialScreen = () => {
       <View style={styles.titleArea}>
         <Text style={styles.title}>Trivia</Text>
       </View>
+
       <View style={styles.inputArea}>
         <TextInput
           style={styles.input}
