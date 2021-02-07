@@ -11,15 +11,27 @@ export const getOneMath = async (num: number): Promise<any> => {
   }
 };
 export const getOneTrivia = async (num: number) => {
-  const { data } = await axios.get(`${URL}${num}`);
-  return data;
+  try {
+    const { data } = await axios.get(`${URL}${num}`);
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
 };
 export const getOneDate = async (month: number, date: number) => {
-  const { data } = await axios.get(`${URL}${month}/${date}/date`);
-  return data;
+  try {
+    const { data } = await axios.get(`${URL}${month}/${date}/date`);
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export const getRandom = async (type: string) => {
-  const { data } = await axios.get(`${URL}type`);
-  return data;
+  try {
+    const { data } = await axios.get(`${URL}type`);
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
 };

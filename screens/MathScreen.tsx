@@ -6,7 +6,7 @@ import { getOneMath } from "../API";
 
 import { Text, View } from "../components/Themed";
 
-export default function TabOneScreen() {
+export default function MathScreen() {
   const initialText = "Input a number";
   const [result, setResult] = useState("");
   const [showResult, setShowResult] = useState("");
