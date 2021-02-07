@@ -18,13 +18,16 @@ const DataScreen = () => {
     show: false,
   });
   let monthInputRef: TextInput | null;
-  let dateInputRef: TextInput | null;
+  let dayInputRef: TextInput | null;
 
   const handlePress = async () => {
     const num1 = Number(month);
     const num2 = Number(day);
     if (isNaN(num1) || isNaN(num2) || num1 === 0 || num2 === 0) {
       return setErrorMsg({ ...errorMsg, show: true });
+    }
+    if (num1 > 12 || num1 < 1 || num2 < 1 || num2 > 31) {
+      return setErrorMsg({ message: "Please input VALID date", show: true });
     }
     try {
       const res = await getOneDate(num1, num2);
@@ -40,14 +43,15 @@ const DataScreen = () => {
     setShowResult("");
     setErrorMsg({ ...errorMsg, show: false });
     monthInputRef?.clear();
-    dateInputRef?.clear();
+    dayInputRef?.clear();
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.titleArea}>
-        <Text style={styles.title}>Trivia</Text>
+        <Text style={styles.title}>Date</Text>
       </View>
+
       <View style={styles.inputArea}>
         <TextInput
           style={styles.input}
@@ -61,11 +65,16 @@ const DataScreen = () => {
           onChangeText={setDay}
           placeholder={initialText}
           clearButtonMode="always"
-          ref={(ref) => (dateInputRef = ref)}
+          ref={(ref) => (dayInputRef = ref)}
         />
-        <View style={styles.button}>
-          <Button onPress={handlePress} title="Get your result!" />
-        </View>
+
+        <TouchableOpacity style={styles.button}>
+          <Button
+            color={styles.button.color}
+            onPress={handlePress}
+            title="Get your result!"
+          />
+        </TouchableOpacity>
       </View>
 
       {showResult ? (
@@ -103,13 +112,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // justifyContent: "space-between",
   },
-  titleArea: {
-    // display: 'flex',
-    // justifyContent: "center",
-    // flex: 1
-  },
+  titleArea: {},
   title: {
     fontSize: 20,
     fontWeight: "bold",
@@ -128,10 +132,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   input: {
-    padding: 20,
-    backgroundColor: "#CFCFD5",
-    borderRadius: 10,
-    width: 50,
+    paddingVertical: Platform.OS === "android" ? 4 : 10,
+    paddingLeft: 10,
+    backgroundColor: Colors.grey,
+    borderRadius: 3,
+    width: 120,
     marginRight: 10,
   },
   button: {
