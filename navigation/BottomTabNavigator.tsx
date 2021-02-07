@@ -78,7 +78,11 @@ const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
 function RandomNavigator() {
   return (
-    <TabTwoStack.Navigator>
+    <TabTwoStack.Navigator
+      screenOptions={{
+        headerTitle: () => null,
+        headerStyle: { shadowColor: "transparent" },
+      }}>
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
