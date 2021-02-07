@@ -19,7 +19,6 @@ export default function MathScreen() {
   const handlePress = async () => {
     const num = Number(result);
     if (isNaN(num) || num === 0) {
-      console.log(errorMsg);
       return setErrorMsg({ ...errorMsg, show: true });
     }
     try {

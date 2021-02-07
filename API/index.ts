@@ -7,7 +7,7 @@ export const getOneMath = async (num: number): Promise<any> => {
     const { data } = await axios.get(`${URL}${num}/math`);
     return data;
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 };
 export const getOneTrivia = async (num: number) => {

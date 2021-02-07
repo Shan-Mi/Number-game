@@ -13,7 +13,6 @@ export default function RandomScreen() {
 
   const handleResult = async (type: string) => {
     try {
-      console.log("yoooo");
       const res = await getRandom(type);
       setResult({ ...result, message: res });
     } catch (e) {
