@@ -4,12 +4,10 @@ import { Button, Platform, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native";
 import { StyleSheet } from "react-native";
 import { getOneDate } from "../API";
-
 import { Text, View } from "../components/Themed";
 import Colors from "../constants/Colors";
 
 const DataScreen = () => {
-  const initialText = "Input a number";
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [showResult, setShowResult] = useState("");
@@ -56,7 +54,7 @@ const DataScreen = () => {
         <TextInput
           style={styles.input}
           onChangeText={setMonth}
-          placeholder={initialText}
+          placeholder='Month'
           clearButtonMode="always"
           keyboardType="numeric"
           ref={(ref) => (monthInputRef = ref)}
@@ -64,7 +62,7 @@ const DataScreen = () => {
         <TextInput
           style={styles.input}
           onChangeText={setDay}
-          placeholder={initialText}
+          placeholder='Day'
           clearButtonMode="always"
           keyboardType="numeric"
           ref={(ref) => (dayInputRef = ref)}
