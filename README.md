@@ -1,6 +1,8 @@
 # Number-game
 Experimental simple project, created by RN, TS, Expo
 
+`expo init <name>` -- Then pick template accordingly.⭐️
+
 ## [API](http://numbersapi.com/#random/math)
 
 ## Purpose
